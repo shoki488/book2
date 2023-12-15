@@ -1,0 +1,41 @@
+<h3>予約内容の確認</h3>
+<%= form_with url: reservations_path(@reservation) do |f| %>
+<table>
+<%= f.hidden_field :room_id, value: @reservation.room_id %>
+<%= f.hidden_field :user_id, value: @reservation.user_id %>
+<tr>
+  <th>チェックイン</th>
+  <td><%= @reservation.check_in %></td>
+  <%= f.hidden_field :check_in, value: @reservation.check_in %>
+</tr>
+<tr>
+  <th>チェックアウト</th>
+  <td><%= @reservation.check_out %></td>
+  <%= f.hidden_field :check_out, value: @reservation.check_out %>
+</tr>
+
+<tr>
+  <th>滞在日数</th>
+  <td><%= @reservation.stay %>日</td>
+  <%= f.hidden_field :stay, value: @reservation.stay %>
+</tr>
+<tr>
+  <th>人数</th>
+  <td><%= @reservation.person %>人</td>
+  <%= f.hidden_field :person, value: @reservation.person %>
+</tr>
+<tr>
+  <th>お支払い金額</th>
+  <td><%= @reservation.totle %>円</td>
+  <td><%= f.hidden_field :totle, value: @reservation.totle %>
+</tr>
+</table>
+<p>予約内容が正しければ「確定」ボタンを押してください。</p>
+<div>
+    <ul>
+      <li><%= f.submit "予約を確定する"  %></li>
+      <li><%= link_to "施設詳細に戻る", :back %></li>
+    </ul>
+  </div>
+<% end %>
+

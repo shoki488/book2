@@ -1,0 +1,49 @@
+<div class="serach">
+  <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |f|%>
+    <table>
+    <tr>
+      <td><%= f.search_field :address, placeholder: "エリア入力" %></td>
+    </tr>
+
+    <tr>
+      <td><%= f.search_field :keyword, placeholder: "キーワード入力" %></td>
+    </tr>
+
+    <tr>
+      <td><%= f.submit :検索, placeholder: "検索" %></td>
+    </tr>
+    </table>
+</div>
+<% end %>
+<p><%= "#{@rooms.count}件が見つかりました。" %></p>
+
+<% @rooms.each do |room| %>
+    <table>
+      <tr>
+        <th>施設名</th>
+        <td><%= link_to "#{room.facility_name}", room_path(room)  %></td>
+      </tr>
+      <tr>
+        <th>施設紹介</th>
+        <td><%= room.introduction %></td>
+      </tr>
+      <tr>
+        <th>料金</th>
+        <td>¥<%= room.price %>円</td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= room.address %></td>
+      </tr>
+      <tr>
+        <th>作成日</th>
+        <td><%= room.created_at.strftime("%FT%R") %></td>
+      </tr>
+      <tr>
+        <th>画像</th>
+        <td>
+        <%= image_tag room.image.url, class: 'card-img-top',width: '300', height: '200' %>
+        </td>
+      </tr>
+    </table>
+    <% end %>

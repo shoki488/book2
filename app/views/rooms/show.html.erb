@@ -1,0 +1,48 @@
+  <table>
+  <%= form_with url: confirm_reservations_path(@reservation) do |f| %>
+    <%= f.hidden_field :room_id, value:@room.id %>
+    <%= f.hidden_field :user_id, value:current_user.id %>
+    
+    <tr>
+       <th>施設名</th>
+       <td><%= @room.facility_name %></td>
+    </tr>
+    <tr>
+       <th>施設紹介</th>
+       <td><%= @room.introduction %></td>
+    </tr>
+    <tr>
+      <th>料金</th>
+       <td>¥<%= @room.price %>円</td>
+       <%= f.hidden_field :price, value: @room.price %>
+    </tr>
+    <tr>
+       <th>住所</th>
+       <td><%= @room.address %></td>
+    </tr>
+    <tr>
+      <th>画像</th>
+       <td>
+        <%= image_tag @room.image.url, class: 'card-img-top',width: '300', height: '200' %>
+       </td> 
+    </tr>
+ <tbody>
+    <tr>
+      <th><%= f.label :check_in, "チェックイン" %></th>
+      <td><%= f.date_field :check_in %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :check_out, "チェックアウト" %></th>
+      <td><%= f.date_field :check_out %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :person, "人数" %></th>
+      <td><%= f.number_field :person %></td>
+    </tr>
+ </tbody>
+</table>
+    <div>
+      <%= f.submit "予約する" %>
+    </div>
+<% end %>
+<%= link_to "Room一覧に戻る", :rooms %>

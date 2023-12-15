@@ -1,0 +1,40 @@
+<header>
+  <nav class="navbar Navbar">
+      <div class="header-left">
+       <a class="navbar-brand" href="/">
+        <img class="logo" src="https://rails-02-sample.herokuapp.com/assets/common/logo.png"></a>
+          </div>
+          <div class="header-right">
+         <% if user_signed_in? %>
+            <div class="dropdown" >
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <% if current_user.image.attached? %>
+            <%= image_tag current_user.image, :size => '50x50'%>
+             <% else %>
+               <%= image_tag "noavatar.png" %>
+             <% end %>
+               <%= current_user.name %>
+            </button>
+      
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+                <li><a class="dropdown-item" href="/rooms">施設一覧</a></li>
+                <li><a class="dropdown-item" href="/rooms/new">施設の新規登録</a></li>
+                <li><a class="dropdown-item" href="/rooms/own">登録済み一覧</a></li>
+                <li><a class="dropdown-item" href="/reservations">予約済み一覧</a></li>
+                <li><a class="dropdown-item" href="/users/account">アカウント設定</a></li>
+                <li><a class="dropdown-item" <%= link_to 'ログアウト',destroy_user_session_path, method: :delete, data: { confirm: "本当にログアウトしますか？"} %></a></li>
+              </ul>
+            </div>
+         <% else %>
+             <ul>
+              <li><%= link_to "ログイン", new_user_session_path, class: '' %></li>
+              <li> <%= link_to "新規登録", new_user_registration_path, class: '' %></li>
+             </ul>
+         <% end %>
+       </div>
+      </div>
+   </nav>
+ </header> 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ <%= notice %>
+ <%= alert %>

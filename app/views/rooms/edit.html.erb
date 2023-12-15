@@ -1,0 +1,39 @@
+ <h3>施設編集</h3>
+ <%= form_with model: @room, url: room_path(@room), method: :put, html: { multipart: true } do |f| %>
+  <%= render "shared/error", obj: @room %> 
+    <table>
+     <thead>
+      <tr>
+        <th><%= f.label :facility_name ,"施設名" %></th>
+        <td><%= f.text_field :facility_name %></td>
+      </tr>
+  
+      <tr>
+        <th><%= f.label :introduction ,"施設詳細" %></th>
+        <td><%= f.text_area :introduction %></td>
+      </tr>
+  
+      <tr>
+        <th><%= f.label :price ,"料金" %></th>
+        <td><%= f.text_field :price %></td>
+      </tr>
+  
+      <tr>
+        <th><%= f.label :address ,"住所" %></th>
+        <td><%= f.text_field :address %></td>
+      </tr>
+  
+      <tr>
+        <td><%= f.label :image, "画像" %></td>
+        <td><%= f.file_field :image %></td>
+      </tr>
+     </thead>
+    </table>
+  
+    <div>
+      <ul>
+        <li><%= f.submit "編集完了する"%></li>
+        <li><%= link_to "Room一覧に戻る", :rooms %></li>
+      </ul>
+    </div>
+  <% end %>
