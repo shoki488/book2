@@ -26,6 +26,9 @@ class RoomsController < ApplicationController
 
   def update
     @room = Room.find(params[:id])
+    if @room.image = nil
+      image_tag "noavatar.png"
+    end
     if @room.update(room_params)
       flash[:notice] ="正常に更新しました"
       redirect_to :rooms

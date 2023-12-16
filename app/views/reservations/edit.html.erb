@@ -2,7 +2,7 @@
 <h3>再予約</h3>
   <table>
     
-  <%= form_with model: @reservation, method: :put, html: { multipart: true } do |f| %>
+  <%= form_with model: @reservation, url: reservations_path, method: :post do |f| %>
     <%= f.hidden_field :room_id, value:@reservation.room.id %>
     <%= f.hidden_field :user_id, value:current_user.id %>
     
@@ -16,7 +16,7 @@
     </tr>
     <tr>
       <th>料金</th>
-       <td>¥<%= @reservation.room.price %>円</td>
+       <td><%= @reservation.room.price %>円</td>
        <%= f.hidden_field :price, value: @reservation.room.price %>
     </tr>
     <tr>
