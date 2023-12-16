@@ -13,7 +13,7 @@ ja:
         image: 画像
       room:
         facility_name: 施設名
-        introduction: 施設紹介
+        introduction: 施設詳細
         price: 料金
         address: 住所
         image: 画像

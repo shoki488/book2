@@ -1,8 +1,9 @@
 <h3>予約内容の確認</h3>
-<%= form_with url: reservations_path(@reservation) do |f| %>
 <table>
-<%= f.hidden_field :room_id, value: @reservation.room_id %>
-<%= f.hidden_field :user_id, value: @reservation.user_id %>
+    
+<%= form_with model: @reservation, url: reservations_path, method: :post do |f| %>
+  <%= f.hidden_field :room_id, value:@reservation.room.id %>
+  <%= f.hidden_field :user_id, value:current_user.id %>
 <tr>
   <th>チェックイン</th>
   <td><%= @reservation.check_in %></td>
