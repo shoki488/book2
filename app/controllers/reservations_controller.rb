@@ -10,32 +10,31 @@ class ReservationsController < ApplicationController
   end
 
   def create 
-    @reservation = Reservation.new(params.require(:reservation).permit(:check_in, :check_out, :stay, :person, :totle, :room_id, :user_id))
+    @reservation = current_user.reservations.new(reservation_params)
+    @rooms = current_user.rooms.all
     if @reservation.save
       redirect_to :reservations
     else
-      render "confirm", status: :unprocessable_entity
+      render "confirm"
     end
   end
 
 
   def confirm 
-     @reservation = current_user.reservations.new(
-     check_in: params[:check_in],
-     check_out: params[:check_out],
-     stay: params[:stay],
-     person: params[:person],
-     totle: params[:totle],
-     room_id: params[:room_id])
-     @room = Room.find_by(id: params[:room_id])
-
-     @room = @reservation.room
+    @reservation = current_user.reservations.new(
+    check_in: params[:check_in],
+    check_out: params[:check_out],
+    stay: params[:stay],
+    person: params[:person],
+    totle: params[:totle],
+    room_id: params[:room_id])
+    @room = Room.find(params[:room_id]) || @room = @reservation.room
     
-     @user = User.find_by(id:@reservation.user_id)
-   if@reservation.check_in.present? && @reservation.check_out.present? && @reservation.person.present?
+    @user = User.find_by(id:@reservation.user_id)
+  if @reservation.check_in.present? && @reservation.check_out.present? && @reservation.person.present?
      @reservation.stay = (@reservation.check_out - @reservation.check_in).to_i
      @reservation.totle = @reservation.stay * @reservation.person * @room.price
-
+  
     if @reservation.check_in < Date.today
       flash[:alert] = "本日より後の日付を選んでください"
       redirect_to room_path(@reservation.room_id)
@@ -49,11 +48,11 @@ class ReservationsController < ApplicationController
       flash[:alert] = "終了日は開始日以降にしてください"
       redirect_to room_path(@reservation.room_id)
     end
-  else
-    flash[:alert] = "空欄もしくは適切でない欄があります"
-    render "rooms/show"
+    else
+      flash[:alert] = "空欄もしくは適切でない欄があります"
+      render "rooms/show"
+    end
   end
-end
 
 
   def edit

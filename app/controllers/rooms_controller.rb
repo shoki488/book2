@@ -6,6 +6,7 @@ class RoomsController < ApplicationController
 
   def new 
     @room = Room.new
+
   end
 
   def create
@@ -19,6 +20,8 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @reservation = Reservation.find(params[:id])
+    
   end
   def edit
     @room = Room.find(params[:id])
@@ -62,6 +65,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:facility_name, :price, :address, :introduction, :image).merge(user_id: current_user.id)
+    params.require(:room).permit(:facility_name, :price, :address, :introduction, :image, :check_in, :check_out, :person).merge(user_id: current_user.id)
   end
 end

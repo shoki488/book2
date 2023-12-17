@@ -1,21 +1,21 @@
 <h3> 予約一覧 </h3>
 <% @reservations.each do |reservation| %>
-    <table>
-    <tr>
-      <th>画像</th>
-      <td>
-       <%= image_tag reservation.room.image.url, class: 'card-img-top',width: '300', height: '200' %>
-      </td>
+  <table>
+  <tr>
+    <th>画像</th>
+    <td>
+    <%= image_tag reservation.room.image.url, class: 'card-img-top',width: '300', height: '200' %>
+    </td>
+  </tr>
+  <tr>
+    <th>施設名</th>
+    <td><%= reservation.room.facility_name %></td>
     </tr>
-    <tr>
-      <th>施設名</th>
-      <td><%= reservation.room.facility_name %></td>
-      </tr>
-    </tr>
-    <tr>
-      <th>施設紹介</th>
-      <td><%= reservation.room.introduction %></td>
-    </tr>
+  </tr>
+  <tr>
+    <th>施設紹介</th>
+    <td><%= reservation.room.introduction %></td>
+  </tr>
     <tr>
       <th>合計金額</th>
       <td>¥<%= reservation.totle = reservation.person * ((reservation.check_out - reservation.check_in).to_i) * reservation.room.price %>円</td>

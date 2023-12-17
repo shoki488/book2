@@ -1,5 +1,5 @@
-  <%= form_with model: @reservation, url: confirm_reservations_path, method: :post do |f| %>
-    <%= f.hidden_field :room_id, value:@room.id %>
+<%= form_with url: confirm_reservations_path(@reservation) do |f| %>
+    <%= f.hidden_field :room_id, value: @room.id %>
     <%= f.hidden_field :user_id, value:current_user.id %>
   <table>
     <tr>
