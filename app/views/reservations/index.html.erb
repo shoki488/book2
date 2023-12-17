@@ -30,7 +30,7 @@
     </tr>
     <tr>
       <th>予約確定日時</th>
-      <td><%= reservation.created_at.strftime("%F %R") %></td>
+      <td><%= reservation.created_at.strftime("%F") %></td>
     </tr>
     <tr>
       <td><%= link_to "再予約", [:edit, reservation] %></td>

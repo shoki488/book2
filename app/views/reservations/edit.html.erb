@@ -1,11 +1,9 @@
 <%= render "shared/error", obj: @reservation %> 
-<h3>再予約</h3>
-  <table>
-    
-  <%= form_with model: @reservation, url: reservations_path, method: :post do |f| %>
+  <h3>再予約</h3>
+  <%= form_with model: @reservation, url: reservation_path(@reservation), method: :patch do |f| %>
     <%= f.hidden_field :room_id, value:@reservation.room.id %>
     <%= f.hidden_field :user_id, value:current_user.id %>
-    
+<table>
     <tr>
        <th>施設名</th>
        <td><%= @reservation.room.facility_name %></td>

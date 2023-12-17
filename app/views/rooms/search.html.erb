@@ -36,10 +36,6 @@
         <td><%= room.address %></td>
       </tr>
       <tr>
-        <th>作成日</th>
-        <td><%= room.created_at.strftime("%FT%R") %></td>
-      </tr>
-      <tr>
         <th>画像</th>
         <td>
         <%= image_tag room.image.url, class: 'card-img-top',width: '300', height: '200' %>
