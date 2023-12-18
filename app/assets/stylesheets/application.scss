@@ -1,0 +1,80 @@
+body {
+    margin: 0%;
+   }
+   
+header {
+    background-color: navy;
+    height: 70px;
+    text-align: center;
+   }
+
+.navbar {
+      display:  fixed;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.5rem;
+   }
+   
+.a {
+    padding-right: 15px;
+    font-size: 20px;
+    font-weight: 300;
+    text-decoration: none;
+   }
+   
+.header-left {
+    padding: 0 35px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+   }
+   
+.logo {
+      width: 200px;
+      vertical-align: middle;
+      
+   }
+   .header-right{
+    display: inline-block;
+    padding-right: 10px;
+   
+   }
+
+   .btn btn-secondary dropdown-toggle{
+     background-color: navy;
+   }
+
+li {
+      list-style: none;
+   }
+p{
+   text-decoration: none;
+   color: black;
+}
+
+img {
+   
+   margin-right: 8px;
+   width: 40px;
+}
+
+.edit_account, .edit_user, .edit_profile, .form_group{
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+
+
+.field{
+   margin-bottom: 20px;
+}
+
+.form{
+   text-align: center;
+}
+
+.sub{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -1,0 +1,24 @@
+<div class="body">
+  <%= stylesheet_link_tag 'users', media: 'all'%>
+    <h2>設定</h2>
+    <div class="contain">
+       <ul class="left_side">
+         <li class="left_item"><a href="/users/account">アカウント</a></li>
+         <li class="left_item"><a href="/users/profile">プロフィール</a></li>
+       </ul>
+        <div class="right_side">
+          <div class="header">
+           <h3>アカウント</h3>
+            <a class="edit_link" href="/users/edit">編集</a>
+          </div>
+            <div class="info">
+             <label class="mail">メールアドレス</label>
+             <p><%= current_user.email%></p>
+            </div>
+            <div class="info">
+             <label class="pass">パスワード</label>
+             <p>*********<p>
+            </div>
+        </div>
+    </div>
+</div>

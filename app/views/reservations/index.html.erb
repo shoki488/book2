@@ -1,0 +1,43 @@
+<h3> 予約一覧 </h3>
+<% @reservations.each do |reservation| %>
+  <table>
+  <tr>
+    <th>画像</th>
+    <td>
+    <%= image_tag reservation.room.image.url, class: 'card-img-top',width: '300', height: '200' %>
+    </td>
+  </tr>
+  <tr>
+    <th>施設名</th>
+    <td><%= reservation.room.facility_name %></td>
+    </tr>
+  </tr>
+  <tr>
+    <th>施設紹介</th>
+    <td><%= reservation.room.introduction %></td>
+  </tr>
+    <tr>
+      <th>合計金額</th>
+      <td>¥<%= reservation.totle = reservation.person * ((reservation.check_out - reservation.check_in).to_i) * reservation.room.price %>円</td>
+    </tr>
+    <tr>
+      <th>チェックイン</th>
+      <td><%= reservation.check_in %></td>
+    </tr>
+    <tr>
+      <th>チェックアウト</th>
+      <td><%= reservation.check_out %></td>
+    </tr>
+    <tr>
+      <th>予約確定日時</th>
+      <td><%= reservation.created_at.strftime("%F") %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "再予約", [:edit, reservation] %></td>
+    </tr>
+    <tr>
+      <td><%= button_to "削除", reservation, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+    </tr>
+  </table>
+  <p>-------------------------------------------------</p>
+  <% end %>

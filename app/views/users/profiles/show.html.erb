@@ -1,0 +1,33 @@
+<div class="body">
+  <%= stylesheet_link_tag 'users', media: 'all'%>
+    <h2>設定</h2>
+    <div class="contain">
+       <ul class="left_side">
+         <li class="left_item"><a href="/users/account">アカウント</a></li>
+         <li class="left_item"><a href="/users/profile">プロフィール</a></li>
+       </ul>
+        <div class="right_side">
+          <div class="header">
+           <h3>プロフィール</h3>
+            <a class="edit_link" href="/users/profile/edit">編集</a>
+          </div>
+            <div class="learn_more">
+             <label class="image_form">アイコン画像</label>
+             <p>
+              <% if current_user.image.attached? %>
+                <%= image_tag current_user.image, :size => '50x50'%>
+              <%else%>
+                <%= image_tag 'noavatar.png', class:"user_icon" %>
+              <% end %></p>
+            </div>
+            <div class="learn_more">
+             <label class="name_form">名前</label>
+              <%= current_user.name%>
+            </div>
+            <div class="learn_more">
+             <label class="profile_form">自己紹介</label>
+             <p><%= current_user.profile%></p>
+           </div>
+        </div>
+    </div>
+</div>
